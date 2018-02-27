@@ -1,0 +1,45 @@
+body {
+  background-color: #eee;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.welcome-body {
+  background-image: url("welcome_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.welcome-left {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 30vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 5rem;
+}
+
+
+.welcome-right {
+  display: flex;
+  align-items: center;
+  width: 30vw;
+  height: 100vh;
+  text-align: center;
+  padding: 6rem;
+}
+
+.welcome-login a{
+  color: white;
+  font-size: 3rem;
+}
