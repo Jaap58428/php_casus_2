@@ -2,6 +2,13 @@
 
 @section('content')
 
-Hier kan je straks student dingen doen
+  <h1>Welkom {{$user_name}}!</h1>
+  @if (count($modules) > 0)
+    <ul>
+      @foreach ($modules as $module)
+      <li>{{$module}}</li>
+    @endforeach
+    </ul>
+  @endif
 
 @endsection
