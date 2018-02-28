@@ -74,11 +74,34 @@ body {
   cursor: pointer;
 }
 
-.cijferlijst-item .good-cijfer {
+
+.good-cijfer {
   color: green;
+  font-weight: bold;
 }
-.cijferlijst-item .bad-cijfer {
+.bad-cijfer {
   color: red;
+  font-weight: bold;
+}
+
+.cijfer-single {
+  padding: 2rem;
+}
+
+.cijfer-single-data {
+  width: auto;
+}
+
+.cijfer-single-data-row {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px grey solid;
+}
+
+.cijfer-single-edits {
+  margin-top: 2rem;
 }
 
 @media (max-width:800px) {
