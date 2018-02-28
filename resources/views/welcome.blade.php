@@ -14,17 +14,15 @@
         <div class="welcome-left">
           <h1>Studie Dashboard!</h1>
           <h2>Het middelpunt van jouw voortgang</h2>
-        </div>
-        <div class="welcome-right">
-          @if (Route::has('login'))
-              <div class="welcome-login">
-                  @auth
-                      <a href="{{ url('/home') }}">Home</a>
-                  @else
-                      <a href="{{ route('login') }}">Login</a>
-                  @endauth
-              </div>
-          @endif
+          <div class="welcome-login">
+            @if (Route::has('login'))
+              @auth
+                <a href="{{ url('/home') }}">Home</a>
+              @else
+                @include('auth.login')
+              @endauth
+            @endif
+          </div>
         </div>
     </body>
 </html>
