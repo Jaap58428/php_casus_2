@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Module extends Model
 {
     protected $table = 'module';
+    public $primaryKey = 'code';
 
     public function cijfers()
     {

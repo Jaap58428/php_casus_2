@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cijfer;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,9 @@ class HomeController extends Controller
     */
     public function index()
     {
-      return view('home');
+      $cijfers = Cijfer::all();
+      // return $cijfers;
+      return view('cijfers.index')->with('cijfers', $cijfers);
     }
 
     /**
@@ -55,7 +58,7 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        return Cijfer::find($id);
     }
 
     /**

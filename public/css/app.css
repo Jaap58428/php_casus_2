@@ -8,7 +8,7 @@ body {
   background-image: url(/images/welcome_bg.jpg?9053c382754e20e0c67479072f6378da);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: scroll;
+  background-attachment: fixed;
 }
 
 .welcome-body {
