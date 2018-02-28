@@ -2,20 +2,27 @@
 
 @section('content')
 
-  <h1>cijfers</h1>
+  <div class="cijferlijst">
+    <div class="cijferlijst-header">      
+      <h1>Cijferoverzicht</h1>
 
-
-
-  @foreach ($cijfers as $cijfer)
-    <div class="cijferlijst-item">
-      <h3><a href="/cijfer/{{$cijfer->id}}">{{ $cijfer->module_code }}</a></h3>
-      <span>{{ $cijfer->student_nummer}}</span>
-      @if ($cijfer->cijfer < 5.5)
-        <span class="good-cijfer">{{$cijfer->cijfer}}</span>
-        @else
-        <span class="bad-cijfer">{{$cijfer->cijfer}}</span>
-      @endif
+      @include('zoekbalk')
     </div>
-  @endforeach
+
+    @foreach ($cijfers as $cijfer)
+      <div class="cijferlijst-item" onclick="location.href='/cijfer/{{$cijfer->id}}'">
+        <h3>{{ $cijfer->module_code }}</h3>
+        <span>Studentnummer: {{ $cijfer->user_student_nummer}}</span>
+        <span>Studentnaam: {{ $cijfer->user->name}}</span>
+        <span>Cijfer: </span>
+        @if ($cijfer->cijfer > 5.5)
+          <span class="good-cijfer">{{$cijfer->cijfer}}</span>
+          @else
+          <span class="bad-cijfer">{{$cijfer->cijfer}}</span>
+        @endif
+      </div>
+    @endforeach
+  </div>
+
 
 @endsection

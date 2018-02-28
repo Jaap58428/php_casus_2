@@ -17,7 +17,7 @@
     <div id="app" class="wrapper">
         <nav class="navbar">
           <div>
-            LOGO
+            Studie Dashboard! - PHP Back end casus 2
           </div>
           <div>
             @guest
@@ -28,7 +28,7 @@
               <a class="nav-link" href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
-                  Logout
+                  Uitloggen
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf

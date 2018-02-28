@@ -47,20 +47,46 @@ body {
 
 .wrapper {
   margin: 0 auto;
-  padding: 0;
   width: 80vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   background-color: rgba(230, 230, 230, 0.9);
 }
 
 .navbar {
-  padding: 2rem;
   display: flex;
+  padding: 2rem;
   justify-content: space-between;
+}
+
+.cijferlijst-header {
+  padding: 2rem;
+}
+
+.cijferlijst-item  {
+  padding: 1rem 2rem;
+  // border-bottom: 1px solid grey;
+  transition: all 0.3s;
+}
+
+.cijferlijst-item:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.cijferlijst-item .good-cijfer {
+  color: green;
+}
+.cijferlijst-item .bad-cijfer {
+  color: red;
 }
 
 @media (max-width:800px) {
   .welcome-left {
+    width: 100%;
+  }
+
+  .wrapper {
     width: 100%;
   }
   @media (max-width:400px) {

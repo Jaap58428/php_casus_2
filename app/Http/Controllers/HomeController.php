@@ -29,6 +29,13 @@ class HomeController extends Controller
       return view('cijfers.index')->with('cijfers', $cijfers);
     }
 
+    public function filter($filter)
+    {
+      $cijfer = Cijfer::where('module_code', $filter);
+
+      return view('cijfers.show')->with('cijfer', $cijfer);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +65,8 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        return Cijfer::find($id);
+        $cijfer = Cijfer::find($id);
+        return view('cijfers.show')->with('cijfer', $cijfer);
     }
 
     /**
