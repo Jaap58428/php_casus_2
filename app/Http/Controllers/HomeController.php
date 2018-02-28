@@ -43,7 +43,8 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+      return view('cijfers.create');
+
     }
 
     /**
@@ -54,7 +55,6 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**

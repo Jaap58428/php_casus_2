@@ -12,29 +12,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 </head>
 <body>
     <div id="app" class="wrapper">
         <nav class="navbar">
-          <div>
-            Studie Dashboard - Back end casus 2
+          <div class="navbar-buttons">
+            <span onclick="location.href='/cijfer'">Studie Dashboard</span>
+            <span onclick="location.href='/cijfer/create'">Cijfer invoeren</span>
           </div>
-          <div>
-            @guest
-              {{-- in het geval dat een gebruiker toch zonder login hier komt, redirect naar login --}}
-              {{ route('/') }}
-            @else
-              <a class="nav-link">{{ Auth::user()->name }}</a>
-              <a class="nav-link" href="{{ route('logout') }}"
-                 onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                  Uitloggen
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-            @endguest
+          <div class="navbar-buttons">
+            <span>{{ Auth::user()->name }}</span>
+            <span onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</span>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           </div>
         </nav>
 

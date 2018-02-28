@@ -55,7 +55,7 @@ body {
 
 .navbar {
   display: flex;
-  padding: 2rem;
+  padding: 0;
   justify-content: space-between;
 }
 
@@ -73,6 +73,25 @@ body {
   background-color: white;
   cursor: pointer;
 }
+
+.navbar-buttons {
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.navbar-buttons span {
+  padding: 2rem;
+  transition: all 0.3s;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.navbar-buttons span:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+
 
 
 .good-cijfer {
