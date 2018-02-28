@@ -14,17 +14,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="wrapper">
         <nav class="navbar">
-
-          <div class="navbar-left">
-
+          <div>
+            LOGO
           </div>
-
-          <div class="navbar-right">
+          <div>
             @guest
-                <a class="nav-link" href="{{ route('login') }}">Login</a>
-                <a class="nav-link" href="{{ route('register') }}">Register</a>
+              {{-- in het geval dat een gebruiker toch zonder login hier komt, redirect naar login --}}
+              {{ route('/') }}
             @else
               <a class="nav-link">{{ Auth::user()->name }}</a>
               <a class="nav-link" href="{{ route('logout') }}"
@@ -37,7 +35,6 @@
               </form>
             @endguest
           </div>
-
         </nav>
 
         <main>
