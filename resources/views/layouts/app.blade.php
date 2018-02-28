@@ -17,7 +17,7 @@
     <div id="app" class="wrapper">
         <nav class="navbar">
           <div>
-            Studie Dashboard! - PHP Back end casus 2
+            Studie Dashboard! - Back end casus 2
           </div>
           <div>
             @guest
