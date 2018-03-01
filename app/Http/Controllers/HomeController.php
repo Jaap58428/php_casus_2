@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cijfer;
+use App\Module;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -43,7 +45,16 @@ class HomeController extends Controller
      */
     public function create()
     {
-      return view('cijfers.create');
+
+      $modules = Module::all();
+      $users = User::all();
+
+      $data = array(
+        'modules' => $modules,
+        'users' => $users,
+      );
+
+      return view('cijfers.create')->with($data);
 
     }
 

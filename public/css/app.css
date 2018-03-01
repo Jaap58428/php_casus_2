@@ -143,6 +143,16 @@ body {
   margin-top: 2rem;
 }
 
+.create-inputelement {
+  width: 30rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 @media (max-width: 800px) {
   .welcome-left {
     width: 100%;

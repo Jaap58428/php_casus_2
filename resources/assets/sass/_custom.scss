@@ -123,6 +123,18 @@ body {
   margin-top: 2rem;
 }
 
+.create-inputelement {
+  width: 30rem;
+  display: flex;
+  justify-content: space-between;
+}
+.create-inputlabel {
+
+}
+.create-inputbox {
+  
+}
+
 @media (max-width:800px) {
   .welcome-left {
     width: 100%;
