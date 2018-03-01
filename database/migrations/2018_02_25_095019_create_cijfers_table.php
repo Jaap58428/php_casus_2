@@ -18,7 +18,7 @@ class CreateCijfersTable extends Migration
             $table->unsignedDecimal('cijfer', 4, 2);
             $table->string('module_code');
             $table->string('user_student_nummer');
-            $table->timestamps()->nullable();
+            $table->timestamps();
         });
     }
 
