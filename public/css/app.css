@@ -141,6 +141,40 @@ body {
 
 .cijfer-single-edits {
   margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.btn {
+  padding: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin: 0;
+  font-size: 1.1rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: lightblue;
+}
+
+.btn-edit:hover {
+  background-color: blue;
+  color: white;
+}
+
+.btn-remove {
+  background-color: salmon;
+}
+
+.btn-remove:hover {
+  background-color: red;
+  color: white;
 }
 
 .create-form {

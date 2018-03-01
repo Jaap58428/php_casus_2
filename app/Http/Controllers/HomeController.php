@@ -102,7 +102,18 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $modules = Module::all();
+        $users = User::all();
+        $cijfer = Cijfer::find($id);
+
+
+        $data = array(
+          'modules' => $modules,
+          'users' => $users,
+          'cijfer' => $cijfer,
+        );
+
+        return view('cijfers.edit')->with($data);
     }
 
     /**
@@ -114,7 +125,19 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'module_code' => 'required',
+        'student_nummer' => 'required',
+        'cijfer' => 'required',
+      ]);
+
+      $cijfer = Cijfer::find($id);
+      $cijfer->cijfer = $request->input('cijfer');
+      $cijfer->module_code = $request->input('module_code');
+      $cijfer->user_student_nummer = $request->input('student_nummer');
+      $cijfer->save();
+      return redirect('/cijfer')->with('success', 'Cijfer aangepast');
+
     }
 
     /**
@@ -125,6 +148,9 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        $cijfer = App\Cijfer::find($id)
+        $cijfer = Cijfer::find($id);
+        $cijfer->delete();
+        return redirect('/cijfer')->with('success', 'Cijfer verwijderd');
+
     }
 }

@@ -23,9 +23,13 @@
         @endforeach</span>
       </div>
     </div>
+
     <div class="cijfer-single-edits">
-      <button type="button" name="button">Verwijder</button>
-      <button type="button" name="button">Verander</button>
+      <button class="btn btn-edit" type="button" name="button" onclick="location.href='/cijfer/{{$cijfer->id}}/edit'">Verander</button>
+      {!! Form::open(['action' => ['HomeController@destroy', $cijfer->id], 'method' => 'POST']) !!}
+        {{Form::hidden('_method', 'DELETE')}}
+        {{Form::submit('Verwijder', ['class' => 'btn btn-remove'])}}
+      {!! Form::close()!!}
     </div>
 
   </div>
