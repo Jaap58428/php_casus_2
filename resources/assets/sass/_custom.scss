@@ -123,16 +123,25 @@ body {
   margin-top: 2rem;
 }
 
-.create-inputelement {
+.create-form {
   width: 30rem;
+  padding: 2rem;
+}
+.create-field {
+  border: 0;
   display: flex;
   justify-content: space-between;
 }
-.create-inputlabel {
+.create-input {
 
 }
-.create-inputbox {
-  
+.create-dropbox {
+  display: flex;
+  justify-content: space-between;
+  color: red;
+}
+.create-submit {
+  align-self: flex-end;
 }
 
 @media (max-width:800px) {

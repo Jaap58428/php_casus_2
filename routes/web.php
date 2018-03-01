@@ -20,6 +20,8 @@ Route::get('/login', function () {
     return view('welcome');
 });
 
+Route::post('/cijfer/submit', 'HomeController@store');
+
 
 Auth::routes();
 
