@@ -31,6 +31,7 @@
         </nav>
 
         <main>
+            @include('messages')
             @yield('content')
         </main>
     </div>

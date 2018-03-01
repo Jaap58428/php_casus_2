@@ -26,7 +26,7 @@ class HomeController extends Controller
     */
     public function index()
     {
-      $cijfers = Cijfer::all();
+      $cijfers = Cijfer::orderBy('created_at', 'desc')->get();
       // return $cijfers;
       return view('cijfers.index')->with('cijfers', $cijfers);
     }
@@ -66,7 +66,20 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-      return $request;
+      $this->validate($request, [
+        'module_code' => 'required',
+        'student_nummer' => 'required',
+        'cijfer' => 'required',
+      ]);
+
+      $cijfer = new Cijfer;
+      $cijfer->cijfer = $request->input('cijfer');
+      $cijfer->module_code = $request->input('module_code');
+      $cijfer->user_student_nummer = $request->input('student_nummer');
+      $cijfer->save();
+      return redirect('/cijfer')->with('success', 'Cijfer ingevoerd');
+
+
     }
 
     /**
