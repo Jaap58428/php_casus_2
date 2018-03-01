@@ -173,6 +173,24 @@ body {
       align-self: flex-end;
 }
 
+.alert-good {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 50%;
+  margin: auto;
+  background-color: lightgreen;
+  padding: 1rem;
+}
+
+.alert-bad {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 50%;
+  margin: auto;
+  background-color: red;
+  padding: 1rem;
+}
+
 @media (max-width: 800px) {
   .welcome-left {
     width: 100%;

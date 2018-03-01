@@ -125,6 +125,6 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cijfer = App\Cijfer::find($id)
     }
 }
