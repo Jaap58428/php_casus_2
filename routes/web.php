@@ -11,6 +11,13 @@
 |
 */
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('cijfer', 'HomeController');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,11 +28,4 @@ Route::get('/login', function () {
 });
 
 Route::post('/cijfer/submit', 'HomeController@store');
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/cijfer/')
-
-Route::resource('cijfer', 'HomeController');
+Route::post('/cijfer/filter', 'HomeController@filter');

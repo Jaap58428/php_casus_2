@@ -31,11 +31,22 @@ class HomeController extends Controller
       return view('cijfers.index')->with('cijfers', $cijfers);
     }
 
-    public function filter($filter)
+    public function filter(Request $request)
     {
-      $cijfer = Cijfer::where('module_code', $filter);
 
-      return view('cijfers.show')->with('cijfer', $cijfer);
+      $this->validate($request, [
+        'module_filter' => 'required|exists:module,code|exists:cijfers,module_code',
+      ]);
+
+
+
+      $data = array(
+        'filter_value' => $request->module_filter,
+        'cijfers' => Cijfer::all()
+      );
+
+      return view('cijfers.filter')->with($data);
+
     }
 
     /**
