@@ -33,7 +33,7 @@
     </div>
 
     <div>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit">Login</button>
       <button type="button" name="button" onclick="window.alert('Gebruik de Force... of roep een admin.')">Wachtwoord vergeten?</button>
     </div>
 </form>
