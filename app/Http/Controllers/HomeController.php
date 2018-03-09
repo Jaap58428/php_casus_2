@@ -134,6 +134,10 @@ class HomeController extends Controller
     {
         $cijfer = Cijfer::find($id);
 
+        if (auth()->user()->is_admin) {
+          return view('cijfers.show')->with('cijfer', $cijfer);
+        }
+
         if (auth()->user()->student_nummer !== $cijfer->user_student_nummer) {
           return redirect('/cijfer')->with('error', 'Helaas, deze pagina is niet voor jou.');
         }
