@@ -19,7 +19,9 @@
         <nav class="navbar">
           <div class="navbar-buttons">
             <span onclick="location.href='/cijfer'">Studie Dashboard</span>
-            <span onclick="location.href='/cijfer/create'">Cijfer invoeren</span>
+            @if (Auth::user()->is_admin)
+              <span onclick="location.href='/cijfer/create'">Cijfer invoeren</span>
+            @endif
           </div>
           <div class="navbar-buttons">
             <span>{{ Auth::user()->name }}</span>

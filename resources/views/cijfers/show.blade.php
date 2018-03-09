@@ -7,7 +7,7 @@
     <div class="cijfer-single-data">
       <div class="cijfer-single-data-row">
         <span>Cijfer</span>
-        <span>@if ($cijfer->cijfer > 5.5)
+        <span>@if ($cijfer->cijfer >= 5.5)
           <span class="good-cijfer">{{$cijfer->cijfer}}</span>
           @else
           <span class="bad-cijfer">{{$cijfer->cijfer}}</span>
@@ -24,13 +24,16 @@
       </div>
     </div>
 
-    <div class="cijfer-single-edits">
-      <button class="btn btn-edit" type="button" name="button" onclick="location.href='/cijfer/{{$cijfer->id}}/edit'">Verander</button>
-      {!! Form::open(['action' => ['HomeController@destroy', $cijfer->id], 'method' => 'POST']) !!}
-        {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Verwijder', ['class' => 'btn btn-remove'])}}
-      {!! Form::close()!!}
-    </div>
+    @if (Auth::user()->is_admin)
+      <div class="cijfer-single-edits">
+        <button class="btn btn-edit" type="button" name="button" onclick="location.href='/cijfer/{{$cijfer->id}}/edit'">Verander</button>
+        {!! Form::open(['action' => ['HomeController@destroy', $cijfer->id], 'method' => 'POST']) !!}
+          {{Form::hidden('_method', 'DELETE')}}
+          {{Form::submit('Verwijder', ['class' => 'btn btn-remove'])}}
+        {!! Form::close()!!}
+      </div>
+    @endif
+
 
   </div>
 @endsection

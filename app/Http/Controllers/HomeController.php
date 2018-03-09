@@ -26,9 +26,23 @@ class HomeController extends Controller
     */
     public function index()
     {
-      $cijfers = Cijfer::orderBy('created_at', 'desc')->get();
+      $user_id = auth()->user()->id;
+      $user = User::find($user_id);
+      if ($user->is_admin) {
+        $cijfers = Cijfer::orderBy('created_at', 'desc')->get();
+      } else {
+        $cijfers = $user->cijfers;
+      };
+
+
+      $data = array(
+        'cijfers' => $cijfers,
+        'user' => $user
+      );
+
+
       // return $cijfers;
-      return view('cijfers.index')->with('cijfers', $cijfers);
+      return view('cijfers.index')->with($data);
     }
 
     public function filter(Request $request)
@@ -38,11 +52,19 @@ class HomeController extends Controller
         'module_filter' => 'required|exists:module,code|exists:cijfers,module_code',
       ]);
 
+      $user_id = auth()->user()->id;
+      $user = User::find($user_id);
+      if ($user->is_admin) {
+        $cijfers = Cijfer::orderBy('created_at', 'desc')->get();
+      } else {
+        $cijfers = $user->cijfers;
+      };
+
 
 
       $data = array(
         'filter_value' => $request->module_filter,
-        'cijfers' => Cijfer::all()
+        'cijfers' => $cijfers
       );
 
       return view('cijfers.filter')->with($data);
@@ -65,7 +87,12 @@ class HomeController extends Controller
         'users' => $users,
       );
 
+      if (!auth()->user()->is_admin) {
+        return redirect('/cijfer')->with('error', 'Helaas, deze pagina is niet voor jou.');
+      }
+
       return view('cijfers.create')->with($data);
+
 
     }
 
@@ -82,6 +109,10 @@ class HomeController extends Controller
         'student_nummer' => 'required',
         'cijfer' => 'required',
       ]);
+
+      if (!auth()->user()->is_admin) {
+        return redirect('/cijfer')->with('error', 'Helaas, deze pagina is niet voor jou.');
+      }
 
       $cijfer = new Cijfer;
       $cijfer->cijfer = $request->input('cijfer');
@@ -102,6 +133,11 @@ class HomeController extends Controller
     public function show($id)
     {
         $cijfer = Cijfer::find($id);
+
+        if (auth()->user()->student_nummer !== $cijfer->user_student_nummer) {
+          return redirect('/cijfer')->with('error', 'Helaas, deze pagina is niet voor jou.');
+        }
+
         return view('cijfers.show')->with('cijfer', $cijfer);
     }
 
@@ -124,6 +160,11 @@ class HomeController extends Controller
           'cijfer' => $cijfer,
         );
 
+
+        if (!auth()->user()->is_admin) {
+          return redirect('/cijfer')->with('error', 'Helaas, deze pagina is niet voor jou.');
+        }
+
         return view('cijfers.edit')->with($data);
     }
 
@@ -142,6 +183,10 @@ class HomeController extends Controller
         'cijfer' => 'required',
       ]);
 
+      if (!auth()->user()->is_admin) {
+        return redirect('/cijfer')->with('error', 'Helaas, deze pagina is niet voor jou.');
+      }
+
       $cijfer = Cijfer::find($id);
       $cijfer->cijfer = $request->input('cijfer');
       $cijfer->module_code = $request->input('module_code');
@@ -159,6 +204,11 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
+
+        if (!auth()->user()->is_admin) {
+          return redirect('/cijfer')->with('error', 'Helaas, deze pagina is niet voor jou.');
+        }
+
         $cijfer = Cijfer::find($id);
         $cijfer->delete();
         return redirect('/cijfer')->with('success', 'Cijfer verwijderd');

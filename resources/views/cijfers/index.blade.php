@@ -19,7 +19,7 @@
           <span>Studentnummer: {{ $cijfer->user_student_nummer}}</span>
           <span>Studentnaam: {{ $cijfer->user->name}}</span>
           <span>Cijfer: </span>
-          @if ($cijfer->cijfer > 5.5)
+          @if ($cijfer->cijfer >= 5.5)
             <span class="good-cijfer">{{$cijfer->cijfer}}</span>
             @else
             <span class="bad-cijfer">{{$cijfer->cijfer}}</span>
